@@ -1,16 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
-publish {
-    userOrg = 'mnayef1995'
-    groupId = 'com.mohamed.aadapter'
-    artifactId = 'library'
-    uploadName = 'AAdapter'
-    publishVersion = '1.0.0'
-    desc = 'Add footer and header & item click listener to recyclerview'
-    dryRun = false
-    website = 'https://github.com/mnayef/aadapter'
-}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -33,4 +22,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.github.jitpack:gradle-simple:1.0'
 }

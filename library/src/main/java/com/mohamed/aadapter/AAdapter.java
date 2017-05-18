@@ -169,7 +169,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
         this.onItemClickListener = listener;
         this.recyclerView = recyclerView;
 
-        recyclerView.setTag(R.id.item_click_support, this);
         recyclerView.addOnChildAttachStateChangeListener(this);
     }
 
@@ -182,7 +181,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
 
     private void detach(RecyclerView view) {
         view.removeOnChildAttachStateChangeListener(this);
-        view.setTag(R.id.item_click_support, null);
     }
 
     @Override
