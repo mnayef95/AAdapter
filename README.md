@@ -13,7 +13,7 @@ repositories {
 **App-level build.gradle** \(\<project>/\<app-module>/build.gradle):
 ---
 ```
-compile compile 'com.github.mnayef:AAdapter:v1.0.1'
+compile 'com.github.mnayef:AAdapter:v1.0.1'
 ```
 
 **JAVA** :
