@@ -1,4 +1,4 @@
-package com.example.mohamed.advanceadapter.listener;
+package com.mohamed.aadapter.listener;
 
 import android.view.View;
 

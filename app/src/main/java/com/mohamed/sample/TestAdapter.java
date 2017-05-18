@@ -1,4 +1,4 @@
-package com.example.mohamed.advanceadapter;
+package com.mohamed.sample;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
