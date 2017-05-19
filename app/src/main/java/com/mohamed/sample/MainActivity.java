@@ -34,8 +34,27 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         header = LayoutInflater.from(this).inflate(R.layout.header, null);
 
         aAdapter = new AAdapter(new TestAdapter());
-        aAdapter.addFooter(footer);
-        aAdapter.addHeader(header);
+        setOnItemClickListener();
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
+        aAdapter.addFooter(LayoutInflater.from(this).inflate(R.layout.footer, null));
+        aAdapter.addHeader(LayoutInflater.from(this).inflate(R.layout.header, null));
 
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(aAdapter);
