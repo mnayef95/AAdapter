@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mohamed.aadapter.listener.OnItemClickListener;
-import com.mohamed.aadapter.model.Footer;
-import com.mohamed.aadapter.model.Header;
 
 import java.util.ArrayList;
 
@@ -33,9 +31,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
     private ArrayList<View> footers = new ArrayList<>();
     private ArrayList<View> headers = new ArrayList<>();
 
-    private ArrayList<Footer> footerModels = new ArrayList<>();
-    private ArrayList<Header> headerModels = new ArrayList<>();
-
     private Adapter adapter;
 
     public AAdapter(Adapter adapter) {
@@ -55,7 +50,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
         } else {
             return OTHERS_TYPE;
         }
-
     }
 
     @Override
@@ -82,12 +76,9 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
     public void onBindViewHolder(final ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
             case FOOTER_TYPE: {
-                int footerPosition = position - (adapter.getItemCount() + headers.size());
-                footerModels.get(footerPosition).setPosition(footerPosition);
                 break;
             }
             case HEADER_TYPE: {
-                headerModels.get(position).setPosition(position);
                 break;
             }
             case OTHERS_TYPE: {
@@ -110,7 +101,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
             throw new RuntimeException("Header already exist: " + header.toString());
         } else {
             headers.add(header);
-            headerModels.add(new Header());
         }
     }
 
@@ -118,8 +108,15 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
         int position = headers.indexOf(footer);
         if (position != -1) {
             headers.remove(header);
-            headerModels.remove(position);
         }
+    }
+
+    public View getHeaderByPosition(int position) {
+        return headers.get(position);
+    }
+
+    public int getHeaderPosition(View header) {
+        return headers.indexOf(header);
     }
 
     public int getHeadersCount() {
@@ -132,7 +129,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
 
     public void removeAllHeaders() {
         headers.clear();
-        headerModels.clear();
     }
 
     public void addFooter(View footer) {
@@ -140,16 +136,22 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
             throw new RuntimeException("Footer already exist: " + footer.toString());
         } else {
             footers.add(footer);
-            footerModels.add(new Footer());
         }
     }
 
     public void removeFooter(View footer) {
         int position = footers.indexOf(footer);
         if (position != -1) {
-            footerModels.remove(position);
             footers.remove(footer);
         }
+    }
+
+    public View getFooterByPosition(int position) {
+        return footers.get(position);
+    }
+
+    public int getFooterPosition(View footer) {
+        return footers.indexOf(footer);
     }
 
     public int getFootersCount() {
@@ -162,7 +164,6 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
 
     public void removeAllFooters() {
         footers.clear();
-        footerModels.clear();
     }
 
     public void setOnItemClickListener(RecyclerView recyclerView, OnItemClickListener listener) {
@@ -219,11 +220,11 @@ public class AAdapter extends Adapter<ViewHolder> implements RecyclerView.OnChil
                     switch (holder.getItemViewType()) {
                         case FOOTER_TYPE: {
                             int footerPosition = position - (adapter.getItemCount() + headers.size());
-                            onItemClickListener.onItemClick(v, false, true, footerModels.get(footerPosition).getPosition(), position);
+                            onItemClickListener.onItemClick(v, false, true, footerPosition, position);
                             break;
                         }
                         case HEADER_TYPE: {
-                            onItemClickListener.onItemClick(v, true, false, headerModels.get(position).getPosition(), position);
+                            onItemClickListener.onItemClick(v, true, false, position, position);
                             break;
                         }
                         default: {
